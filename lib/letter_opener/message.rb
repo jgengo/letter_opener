@@ -27,7 +27,7 @@ module LetterOpener
       FileUtils.mkdir_p(@location)
 
       if mail.attachments.any?
-        attachments_dir = File.join(@location, 'attachments')
+        attachments_dir = File.join(@location, 'attachmentssss')
         FileUtils.mkdir_p(attachments_dir)
         mail.attachments.each do |attachment|
           filename = attachment_filename(attachment)
