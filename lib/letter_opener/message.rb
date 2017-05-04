@@ -36,7 +36,7 @@ module LetterOpener
 
           unless File.exist?(path) # true if other parts have already been rendered
             print attachment.body.raw_source
-            File.open(path, 'wb') { |f| f.write(IO.read(attachment.body.raw_source)) }
+            FileUtils.cp(attachment.body.raw_source, path)
           end
           @attachments << [attachment.filename, "attachments/#{CGI.escape(filename)}"]
         end
