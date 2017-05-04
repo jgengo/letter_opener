@@ -34,7 +34,7 @@ module LetterOpener
           path = File.join(attachments_dir, filename)
 
           unless File.exist?(path) # true if other parts have already been rendered
-            File.read(attachment.body)
+            print File.read(attachment.body)
             File.open(path, 'wb') { |f| f.write(attachment.body.raw_source) }
           end
           @attachments << [attachment.filename, "attachments/#{CGI.escape(filename)}"]
