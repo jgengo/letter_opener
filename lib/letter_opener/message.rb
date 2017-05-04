@@ -2,6 +2,7 @@ require "cgi"
 require "erb"
 require "fileutils"
 require "uri"
+require "io/console"
 
 module LetterOpener
   class Message
@@ -35,7 +36,7 @@ module LetterOpener
 
           unless File.exist?(path) # true if other parts have already been rendered
             print attachment.body
-            print File.read(attachment.body)
+            print IO.read(attachment.body)
             File.open(path, 'wb') { |f| f.write(attachment.body.raw_source) }
           end
           @attachments << [attachment.filename, "attachments/#{CGI.escape(filename)}"]
